@@ -1,0 +1,221 @@
+@import 'partial'; 
+
+body {
+	background-color: black;
+
+	#table-container {
+		width: 1008px;
+		margin: 0 auto;
+		#table {	
+			width: 1000px;
+			height: 600px;
+			position: absolute;
+			z-index: -1;
+		}
+
+		#object-container {
+			width: 1000px;
+			height: 600px;
+			
+				// Deal button
+			#deal-btn {
+				background-color: white;
+				margin-top: 10px;
+			    margin-left: 75%;
+			    width: 60px;
+			    height: 50px;
+			    color: yellow;
+			    background-color: green;
+			    font-size: 18px;
+			    font-family: sans-serif;
+			    text-align: center;
+			}
+
+					// cards
+			#card-container{
+				position: absolute;
+				height: 500px;
+				width: 100%;
+				img {
+					width: 70px;
+					position: absolute;
+				}
+					
+					// dealers cards
+				#dealer-card-one{
+					margin-top: 40px;
+					margin-left: 470px;
+				}
+				#dealer-card-two{
+					height: 101px;
+					margin-top: 40px;
+					margin-left: 500px;
+					z-index: -1;
+				}
+				#dealer-card-three{
+					margin-top: 40px;
+					margin-left: 440px;
+				}
+				#dealer-card-four{
+					margin-top: 40px;
+					margin-left: 410px;
+				}
+				#dealer-card-five{
+					margin-top: 40px;
+					margin-left: 380px;
+				}
+					
+					//player one cards
+				#playerOne-card-one {
+					margin-top: 230px;
+					margin-left: 915px;
+				}
+				#playerOne-card-two {
+					margin-top: 210px;
+					margin-left: 895px;
+				}
+				#playerOne-card-three {
+					margin-top: 190px;
+					margin-left: 875px;
+				}
+				#playerOne-card-four {
+					margin-top: 170px;
+					margin-left: 855px;
+				}
+				#playerOne-card-five {
+					margin-top: 150px;
+					margin-left: 835px;
+				}
+					
+					// player two cards	
+				#playerTwo-card-one {
+					margin-top: 300px;
+					margin-left: 700px;
+				}
+				#playerTwo-card-two {
+					margin-top: 280px;
+					margin-left: 680px;
+				}
+				#playerTwo-card-three {
+					margin-top: 260px;
+					margin-left: 660px;
+				}
+				#playerTwo-card-four {
+					margin-top: 240px;
+					margin-left: 640px;
+				}
+				#playerTwo-card-five {
+					margin-top: 220px;
+					margin-left: 620px;
+				}
+					
+					//player 3 cards
+				#playerThree-card-one {
+					margin-top: 330px;
+					margin-left: 490px;
+				}
+				#playerThree-card-two {
+					margin-top: 300px;
+					margin-left: 480px;
+				}
+				#playerThree-card-three {
+					margin-top: 270px;
+					margin-left: 470px;
+				}
+				#playerThree-card-four {
+					margin-top: 240px;
+					margin-left: 460px;
+				}
+				#playerThree-card-five {
+					margin-top: 210px;
+					margin-left: 450px;
+				}
+				#playerFour-card-one {
+					margin-top: 310px;
+					margin-left: 220px;
+				}
+				#playerFour-card-two {
+					margin-top: 290px;
+					margin-left: 240px;
+				}
+				#playerFour-card-three {
+					margin-top: 270px;
+					margin-left: 260px;
+				}
+				#playerFour-card-four {
+					margin-top: 250px;
+					margin-left: 280px;
+				}
+				#playerFour-card-five {
+					margin-top: 230px;
+					margin-left: 300px;
+				}
+				#playerFive-card-one {
+					margin-top: 240px;
+					margin-left: 30px;
+				}
+				#playerFive-card-two {
+					margin-top: 220px;
+					margin-left: 50px;
+				}
+				#playerFive-card-three {
+					margin-top: 200px;
+					margin-left: 70px;
+				}
+				#playerFive-card-four {
+					margin-top: 180px;
+					margin-left: 90px;
+				}
+				#playerFive-card-five {
+					margin-top: 160px;
+					margin-left: 110px;
+				}
+			}
+
+
+					//chips
+			#min-container {
+				margin-top: 396px;
+				height: 150px;
+				width: 350px;
+				position: absolute; 
+
+				#min-btn {
+					border-radius: 30px;
+					width: 45px;
+					margin-top: 1px;
+					margin-left: 60px;
+					position: absolute; 
+				}	
+				#one-btn {
+					@extend #min-btn;
+					margin-top: 26px;
+					margin-left: 111px;
+					position: absolute; 
+				}
+
+				#four-btn {
+					@extend #min-btn;
+					margin-left: 163px;
+					margin-top: 40px;
+					position: absolute; 
+				}
+
+				#ten-btn {
+					@extend #min-btn;
+					margin-left: 216px;
+					margin-top: 53px;
+					position: absolute; 
+				}
+				
+				#twenty-btn {
+					@extend #min-btn;
+					margin-top: 62px;
+					margin-left: 269px;
+					position: absolute; 
+				}
+			}
+		}
+	}
+}
+

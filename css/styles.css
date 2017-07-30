@@ -1,0 +1,152 @@
+body {
+  background-color: black; }
+  body #table-container {
+    width: 1008px;
+    margin: 0 auto; }
+    body #table-container #table {
+      width: 1000px;
+      height: 600px;
+      position: absolute;
+      z-index: -1; }
+    body #table-container #object-container {
+      width: 1000px;
+      height: 600px; }
+      body #table-container #object-container #deal-btn {
+        background-color: white;
+        margin-top: 10px;
+        margin-left: 75%;
+        width: 60px;
+        height: 50px;
+        color: yellow;
+        background-color: green;
+        font-size: 18px;
+        font-family: sans-serif;
+        text-align: center; }
+      body #table-container #object-container #card-container {
+        position: absolute;
+        height: 500px;
+        width: 100%; }
+        body #table-container #object-container #card-container img {
+          width: 70px;
+          position: absolute; }
+        body #table-container #object-container #card-container #dealer-card-one {
+          margin-top: 40px;
+          margin-left: 470px; }
+        body #table-container #object-container #card-container #dealer-card-two {
+          height: 101px;
+          margin-top: 40px;
+          margin-left: 500px;
+          z-index: -1; }
+        body #table-container #object-container #card-container #dealer-card-three {
+          margin-top: 40px;
+          margin-left: 440px; }
+        body #table-container #object-container #card-container #dealer-card-four {
+          margin-top: 40px;
+          margin-left: 410px; }
+        body #table-container #object-container #card-container #dealer-card-five {
+          margin-top: 40px;
+          margin-left: 380px; }
+        body #table-container #object-container #card-container #playerOne-card-one {
+          margin-top: 230px;
+          margin-left: 915px; }
+        body #table-container #object-container #card-container #playerOne-card-two {
+          margin-top: 210px;
+          margin-left: 895px; }
+        body #table-container #object-container #card-container #playerOne-card-three {
+          margin-top: 190px;
+          margin-left: 875px; }
+        body #table-container #object-container #card-container #playerOne-card-four {
+          margin-top: 170px;
+          margin-left: 855px; }
+        body #table-container #object-container #card-container #playerOne-card-five {
+          margin-top: 150px;
+          margin-left: 835px; }
+        body #table-container #object-container #card-container #playerTwo-card-one {
+          margin-top: 300px;
+          margin-left: 700px; }
+        body #table-container #object-container #card-container #playerTwo-card-two {
+          margin-top: 280px;
+          margin-left: 680px; }
+        body #table-container #object-container #card-container #playerTwo-card-three {
+          margin-top: 260px;
+          margin-left: 660px; }
+        body #table-container #object-container #card-container #playerTwo-card-four {
+          margin-top: 240px;
+          margin-left: 640px; }
+        body #table-container #object-container #card-container #playerTwo-card-five {
+          margin-top: 220px;
+          margin-left: 620px; }
+        body #table-container #object-container #card-container #playerThree-card-one {
+          margin-top: 330px;
+          margin-left: 490px; }
+        body #table-container #object-container #card-container #playerThree-card-two {
+          margin-top: 300px;
+          margin-left: 480px; }
+        body #table-container #object-container #card-container #playerThree-card-three {
+          margin-top: 270px;
+          margin-left: 470px; }
+        body #table-container #object-container #card-container #playerThree-card-four {
+          margin-top: 240px;
+          margin-left: 460px; }
+        body #table-container #object-container #card-container #playerThree-card-five {
+          margin-top: 210px;
+          margin-left: 450px; }
+        body #table-container #object-container #card-container #playerFour-card-one {
+          margin-top: 310px;
+          margin-left: 220px; }
+        body #table-container #object-container #card-container #playerFour-card-two {
+          margin-top: 290px;
+          margin-left: 240px; }
+        body #table-container #object-container #card-container #playerFour-card-three {
+          margin-top: 270px;
+          margin-left: 260px; }
+        body #table-container #object-container #card-container #playerFour-card-four {
+          margin-top: 250px;
+          margin-left: 280px; }
+        body #table-container #object-container #card-container #playerFour-card-five {
+          margin-top: 230px;
+          margin-left: 300px; }
+        body #table-container #object-container #card-container #playerFive-card-one {
+          margin-top: 240px;
+          margin-left: 30px; }
+        body #table-container #object-container #card-container #playerFive-card-two {
+          margin-top: 220px;
+          margin-left: 50px; }
+        body #table-container #object-container #card-container #playerFive-card-three {
+          margin-top: 200px;
+          margin-left: 70px; }
+        body #table-container #object-container #card-container #playerFive-card-four {
+          margin-top: 180px;
+          margin-left: 90px; }
+        body #table-container #object-container #card-container #playerFive-card-five {
+          margin-top: 160px;
+          margin-left: 110px; }
+      body #table-container #object-container #min-container {
+        margin-top: 396px;
+        height: 150px;
+        width: 350px;
+        position: absolute; }
+        body #table-container #object-container #min-container #min-btn, body #table-container #object-container #min-container #one-btn, body #table-container #object-container #min-container #four-btn, body #table-container #object-container #min-container #ten-btn, body #table-container #object-container #min-container #twenty-btn {
+          border-radius: 30px;
+          width: 45px;
+          margin-top: 1px;
+          margin-left: 60px;
+          position: absolute; }
+        body #table-container #object-container #min-container #one-btn {
+          margin-top: 26px;
+          margin-left: 111px;
+          position: absolute; }
+        body #table-container #object-container #min-container #four-btn {
+          margin-left: 163px;
+          margin-top: 40px;
+          position: absolute; }
+        body #table-container #object-container #min-container #ten-btn {
+          margin-left: 216px;
+          margin-top: 53px;
+          position: absolute; }
+        body #table-container #object-container #min-container #twenty-btn {
+          margin-top: 62px;
+          margin-left: 269px;
+          position: absolute; }
+
+/*# sourceMappingURL=styles.css.map */
