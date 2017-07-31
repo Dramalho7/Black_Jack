@@ -6,6 +6,8 @@ body {
 	#table-container {
 		width: 1008px;
 		margin: 0 auto;
+		height: 700px;
+
 		#table {	
 			width: 1000px;
 			height: 600px;
@@ -17,6 +19,27 @@ body {
 			width: 1000px;
 			height: 600px;
 			
+				// Current money bar
+			#standings-bar {
+				width: 70px;
+				height: 270px;
+				position: absolute;
+				margin-left: 0px;
+				background-color: black;
+				text-align: center;
+				p {
+					color: #525151;
+					text-decoration: underline;
+					margin-top: 6px;
+				}
+				h6 {
+					color: #525151;
+					margin: 0px;
+				}
+				.pOne {
+					color: white;
+				}
+			}
 				// Deal button
 			#deal-btn {
 				background-color: white;
@@ -25,13 +48,16 @@ body {
 			    width: 60px;
 			    height: 50px;
 			    color: yellow;
-			    background-color: green;
+			    background-color: #116C0E;
 			    font-size: 18px;
 			    font-family: sans-serif;
 			    text-align: center;
 			}
-
-					// cards
+			#deal-btn:hover {
+				background-color:yellow;
+				color:#116C0E;
+			}
+					// cards on the table
 			#card-container{
 				position: absolute;
 				height: 500px;
@@ -39,6 +65,7 @@ body {
 				img {
 					width: 70px;
 					position: absolute;
+					display: none;
 				}
 					
 					// dealers cards
@@ -172,9 +199,9 @@ body {
 				}
 			}
 
-
 					//chips
-			#min-container {
+			
+			#chip-container {
 				margin-top: 396px;
 				height: 150px;
 				width: 350px;
@@ -187,6 +214,12 @@ body {
 					margin-left: 60px;
 					position: absolute; 
 				}	
+				#min-btn:hover {
+					width: 55px;
+				}
+				#min-btn:active{
+					width:45px;
+				}
 				#one-btn {
 					@extend #min-btn;
 					margin-top: 26px;
@@ -215,7 +248,53 @@ body {
 					position: absolute; 
 				}
 			}
+					//player bar
+			#player-bar {
+			width: 350px;
+			height: 100px;
+			position: absolute;
+			margin-left: 330px;
+			margin-top: 430px;
+				#bet {
+					position: absolute;
+					margin-left: 50px;
+					margin-top: 30px;
+					color: white;
+				}
+				#current-bet {
+					position:absolute;
+					margin-top: 48px;
+					margin-left: 48px;
+					height: 20px;
+					width: 75px;
+					background-color: white;
+					margin-bottom: 0px;
+					text-align: center;
+					border: 2px solid black;
+				}
+				#hit-btn {
+					position:absolute;
+					margin-top: 48px;
+					margin-left: 150px;
+					height: 25px;
+					width: 55px;
+					border: 2px solid black;
+					background-color: white;
+					font-size: 14px;
+				}
+				#stay-btn {
+					@extend #hit-btn;
+					margin-left: 225px;
+				}
+				#split-btn {
+					@extend #hit-btn;
+					margin-left: 300px;
+					opacity: 0.0;
+				}
+			}
 		}
+		
 	}
+	
 }
 
