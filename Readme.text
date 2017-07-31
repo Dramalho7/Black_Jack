@@ -5,4 +5,10 @@
 5. begin the functionality
 	a. object creators , link and, buld player adder.
 	b. how to store value of cards.
-	c. how to make a player instance on the event of a clicked add player button
+	c. how to make a player instance on the event of a clicked add player buttons
+	d. deal the cards
+		- all cards in an array
+		- give cards to each player that is currently in the game
+		- come up with a way for cards to be randomly distributed without any duplicate values.
+		- add the values to give player a new value.
+		- manipulate dom
