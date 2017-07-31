@@ -3,3 +3,6 @@
 3. place where cards will appear when they are called.
 4. build a box of buttons for the user to interact with.
 5. begin the functionality
+	a. object creators , link and, buld player adder.
+	b. how to store value of cards.
+	c. how to make a player instance on the event of a clicked add player button

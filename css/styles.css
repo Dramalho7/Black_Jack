@@ -3,7 +3,7 @@ body {
   body #table-container {
     width: 1008px;
     margin: 0 auto;
-    height: 700px; }
+    height: 600px; }
     body #table-container #table {
       width: 1000px;
       height: 600px;
@@ -203,10 +203,19 @@ body {
           border: 2px solid black;
           background-color: white;
           font-size: 14px; }
+        body #table-container #object-container #player-bar #hit-btn:hover, body #table-container #object-container #player-bar #stay-btn:hover, body #table-container #object-container #player-bar #split-btn:hover {
+          background-color: green; }
+        body #table-container #object-container #player-bar #hit-btn:active, body #table-container #object-container #player-bar #stay-btn:active, body #table-container #object-container #player-bar #split-btn:active {
+          background-color: white; }
         body #table-container #object-container #player-bar #stay-btn {
           margin-left: 225px; }
         body #table-container #object-container #player-bar #split-btn {
           margin-left: 300px;
           opacity: 0.0; }
+  body #new-players {
+    margin: 0 auto;
+    text-align: center; }
+  body #new-players button:hover {
+    background-color: green; }
 
 /*# sourceMappingURL=styles.css.map */

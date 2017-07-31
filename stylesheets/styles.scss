@@ -6,7 +6,7 @@ body {
 	#table-container {
 		width: 1008px;
 		margin: 0 auto;
-		height: 700px;
+		height: 600px;
 
 		#table {	
 			width: 1000px;
@@ -67,8 +67,8 @@ body {
 					position: absolute;
 					display: none;
 				}
-					
 					// dealers cards
+				
 				#dealer-card-one{
 					margin-top: 40px;
 					margin-left: 470px;
@@ -249,12 +249,13 @@ body {
 				}
 			}
 					//player bar
+
 			#player-bar {
-			width: 350px;
-			height: 100px;
-			position: absolute;
-			margin-left: 330px;
-			margin-top: 430px;
+				width: 350px;
+				height: 100px;
+				position: absolute;
+				margin-left: 330px;
+				margin-top: 430px;
 				#bet {
 					position: absolute;
 					margin-left: 50px;
@@ -282,6 +283,13 @@ body {
 					background-color: white;
 					font-size: 14px;
 				}
+				#hit-btn:hover {
+					background-color:green;
+
+				}
+				#hit-btn:active{
+					background-color:white;
+				}
 				#stay-btn {
 					@extend #hit-btn;
 					margin-left: 225px;
@@ -292,8 +300,16 @@ body {
 					opacity: 0.0;
 				}
 			}
+
 		}
 		
+	}
+	#new-players {
+		margin:0 auto;
+		text-align: center;
+	}
+	#new-players button:hover {
+			background-color:green;
 	}
 	
 }
