@@ -28,16 +28,13 @@ body {
 				background-color: black;
 				text-align: center;
 				p {
-					color: #525151;
+					color: white;
 					text-decoration: underline;
 					margin-top: 6px;
 				}
 				h6 {
-					color: #525151;
-					margin: 0px;
-				}
-				.pOne {
 					color: white;
+					margin: 0px;
 				}
 			}
 				// Deal button
@@ -54,7 +51,19 @@ body {
 			    text-align: center;
 			}
 			#reset-btn {
-				@extend #deal-btn
+				@extend #deal-btn;
+
+			}
+			#bet-btn {
+				margin-top: 10px;
+			    margin-left: 75%;
+			    width: 60px;
+			    height: 50px;
+			    color: yellow;
+			    background-color: #116C0E;
+			    font-size: 18px;
+			    font-family: sans-serif;
+			    text-align: center;
 			}
 			#deal-btn:hover {
 				background-color:yellow;
@@ -71,7 +80,32 @@ body {
 					display: none;
 				}
 					// dealers cards
-				
+				.pUp {
+					width:50px;
+					display: inherit;
+				}
+
+				#pOneUp {
+					margin-top: 340px;
+					margin-left:900px;
+				}
+				#pTwoUp {
+					margin-top: 400px;
+					margin-left: 640px;
+				}
+				#pThreeUp {
+					margin-top: 410px;
+					margin-left: 430px;
+				}
+				#pFourUp{
+					margin-top: 400px;
+					margin-left: 290px;
+				}
+				#pFiveUp{
+					margin-top: 340px;
+					margin-left: 100px;
+				}
+
 				#dealer-card-one{
 					margin-top: 40px;
 					margin-left: 470px;
@@ -259,60 +293,104 @@ body {
 				position: absolute;
 				margin-left: 330px;
 				margin-top: 430px;
+
 				#bet {
 					position: absolute;
-					margin-left: 50px;
-					margin-top: 30px;
+					margin-left: 43px;
+					margin-top: 35px;
 					color: white;
+					font-size: 16px;
 				}
+
 				#current-bet {
 					position:absolute;
-					margin-top: 48px;
-					margin-left: 48px;
+					margin-top: 53px;
+					margin-left: 28px;
 					height: 20px;
-					width: 75px;
+					width: 50px;
 					background-color: white;
 					margin-bottom: 0px;
 					text-align: center;
 					border: 2px solid black;
+					font-size: 16px;
+				}
+
+				#place-bet-btn {
+					position:absolute;
+					margin-top: 53px;
+					margin-left: 87px;
+					width: 20px;
+					height: 20px;
+					text-align: center;
+					border: 2px solid black;
+					font-size: 11px;
+					background-color: white;
+				}
+				#place-bet-btn:hover {
+					background-color:green;
+
+				}
+				#place-bet-btn:active{
+					background-color:white;
 				}
 				#hit-btn {
 					position:absolute;
-					margin-top: 48px;
-					margin-left: 150px;
+					margin-top: 53px;
+					margin-left: 116px;
 					height: 25px;
-					width: 55px;
+					width: 45px;
 					border: 2px solid black;
 					background-color: white;
 					font-size: 14px;
 				}
+
 				#hit-btn:hover {
 					background-color:green;
 
 				}
+
 				#hit-btn:active{
 					background-color:white;
 				}
+
 				#stay-btn {
 					@extend #hit-btn;
-					margin-left: 225px;
+					margin-left: 165px;
+				}
+
+				#double-btn {
+					@extend #hit-btn;
+					margin-left: 215px;
+					font-size: 11px;
+					width: 58px
 				}
 				#split-btn {
 					@extend #hit-btn;
-					margin-left: 300px;
-					opacity: 0.0;
+					margin-left: 278px;
+					opacity: 1.0;
 				}
 			}
-
 		}
-		
 	}
+
 	#new-players {
 		margin:0 auto;
 		text-align: center;
 	}
 	#new-players button:hover {
 			background-color:green;
+	}
+	#player-three {
+		display: none;
+		margin: 0 auto;
+	}
+	#player-four {
+		display: none;
+		margin: 0 auto;
+	}
+	#player-five {
+		display: none;
+		margin: 0 auto;
 	}
 	
 }

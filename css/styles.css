@@ -20,16 +20,24 @@ body {
         background-color: black;
         text-align: center; }
         body #table-container #object-container #standings-bar p {
-          color: #525151;
+          color: white;
           text-decoration: underline;
           margin-top: 6px; }
         body #table-container #object-container #standings-bar h6 {
-          color: #525151;
+          color: white;
           margin: 0px; }
-        body #table-container #object-container #standings-bar .pOne {
-          color: white; }
       body #table-container #object-container #deal-btn, body #table-container #object-container #reset-btn {
         background-color: white;
+        margin-top: 10px;
+        margin-left: 75%;
+        width: 60px;
+        height: 50px;
+        color: yellow;
+        background-color: #116C0E;
+        font-size: 18px;
+        font-family: sans-serif;
+        text-align: center; }
+      body #table-container #object-container #bet-btn {
         margin-top: 10px;
         margin-left: 75%;
         width: 60px;
@@ -50,6 +58,24 @@ body {
           width: 70px;
           position: absolute;
           display: none; }
+        body #table-container #object-container #card-container .pUp {
+          width: 50px;
+          display: inherit; }
+        body #table-container #object-container #card-container #pOneUp {
+          margin-top: 340px;
+          margin-left: 900px; }
+        body #table-container #object-container #card-container #pTwoUp {
+          margin-top: 400px;
+          margin-left: 640px; }
+        body #table-container #object-container #card-container #pThreeUp {
+          margin-top: 410px;
+          margin-left: 430px; }
+        body #table-container #object-container #card-container #pFourUp {
+          margin-top: 400px;
+          margin-left: 290px; }
+        body #table-container #object-container #card-container #pFiveUp {
+          margin-top: 340px;
+          margin-left: 100px; }
         body #table-container #object-container #card-container #dealer-card-one {
           margin-top: 40px;
           margin-left: 470px; }
@@ -181,41 +207,70 @@ body {
         margin-top: 430px; }
         body #table-container #object-container #player-bar #bet {
           position: absolute;
-          margin-left: 50px;
-          margin-top: 30px;
-          color: white; }
+          margin-left: 43px;
+          margin-top: 35px;
+          color: white;
+          font-size: 16px; }
         body #table-container #object-container #player-bar #current-bet {
           position: absolute;
-          margin-top: 48px;
-          margin-left: 48px;
+          margin-top: 53px;
+          margin-left: 28px;
           height: 20px;
-          width: 75px;
+          width: 50px;
           background-color: white;
           margin-bottom: 0px;
           text-align: center;
-          border: 2px solid black; }
-        body #table-container #object-container #player-bar #hit-btn, body #table-container #object-container #player-bar #stay-btn, body #table-container #object-container #player-bar #split-btn {
+          border: 2px solid black;
+          font-size: 16px; }
+        body #table-container #object-container #player-bar #place-bet-btn {
           position: absolute;
-          margin-top: 48px;
-          margin-left: 150px;
+          margin-top: 53px;
+          margin-left: 87px;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          border: 2px solid black;
+          font-size: 11px;
+          background-color: white; }
+        body #table-container #object-container #player-bar #place-bet-btn:hover {
+          background-color: green; }
+        body #table-container #object-container #player-bar #place-bet-btn:active {
+          background-color: white; }
+        body #table-container #object-container #player-bar #hit-btn, body #table-container #object-container #player-bar #stay-btn, body #table-container #object-container #player-bar #double-btn, body #table-container #object-container #player-bar #split-btn {
+          position: absolute;
+          margin-top: 53px;
+          margin-left: 116px;
           height: 25px;
-          width: 55px;
+          width: 45px;
           border: 2px solid black;
           background-color: white;
           font-size: 14px; }
-        body #table-container #object-container #player-bar #hit-btn:hover, body #table-container #object-container #player-bar #stay-btn:hover, body #table-container #object-container #player-bar #split-btn:hover {
+        body #table-container #object-container #player-bar #hit-btn:hover, body #table-container #object-container #player-bar #stay-btn:hover, body #table-container #object-container #player-bar #double-btn:hover, body #table-container #object-container #player-bar #split-btn:hover {
           background-color: green; }
-        body #table-container #object-container #player-bar #hit-btn:active, body #table-container #object-container #player-bar #stay-btn:active, body #table-container #object-container #player-bar #split-btn:active {
+        body #table-container #object-container #player-bar #hit-btn:active, body #table-container #object-container #player-bar #stay-btn:active, body #table-container #object-container #player-bar #double-btn:active, body #table-container #object-container #player-bar #split-btn:active {
           background-color: white; }
         body #table-container #object-container #player-bar #stay-btn {
-          margin-left: 225px; }
+          margin-left: 165px; }
+        body #table-container #object-container #player-bar #double-btn {
+          margin-left: 215px;
+          font-size: 11px;
+          width: 58px; }
         body #table-container #object-container #player-bar #split-btn {
-          margin-left: 300px;
-          opacity: 0.0; }
+          margin-left: 278px;
+          opacity: 1.0; }
   body #new-players {
     margin: 0 auto;
     text-align: center; }
   body #new-players button:hover {
     background-color: green; }
+  body #player-three {
+    display: none;
+    margin: 0 auto; }
+  body #player-four {
+    display: none;
+    margin: 0 auto; }
+  body #player-five {
+    display: none;
+    margin: 0 auto; }
 
 /*# sourceMappingURL=styles.css.map */

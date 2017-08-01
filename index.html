@@ -10,21 +10,22 @@
 		<div id='object-container'>
 				<!-- current standings -->
 			<div id='standings-bar'>
-				<p class='pOne'><b>Player 1</b></p>
-					<h6 id='moneyOne' class='pOne'>50</h6>
-				<p class='pTwo'><b>Player 2</b></p>
-					<h6 id='moneyOne' class='ptwo'>n/a</h6>
-				<p class='pThree'><b>Player 3</b></p>
-					<h6 id='moneyOne' class='pThree'>n/a</h6>
-				<p class='pFour'><b>Player 4</b></p>
-					<h6 id='moneyOne' class='pFour'>n/a</h6>
-				<p class='pFive'><b>Player 5</b></p>
-					<h6 id='moneyOne' class='pFive'>n/a</h6>
+				<p id='pOneName' class='pOne'><b>Player 1</b></p>
+					<h6 id='moneyOne' class='pOne'>100$</h6>
+				<p id='pTwoName' class='ptwo'><b> </b></p>
+					<h6 id='moneyTwo' class='ptwo'> </h6>
+				<p id='pThreeName' class='pThree'><b> </b></p>
+					<h6 id='moneyThree' class='pThree'> </h6>
+				<p id='pFourName' class='pFour'><b> </b></p>
+					<h6 id='moneyFour' class='pFour'> </h6>
+				<p id='pFiveName' class='pFive'><b> </b></p>
+					<h6 id='moneyFive' class='pFive'> </h6>
 			</div>
 
 				<!-- deal button -->
 			<button id='deal-btn'>DEAL</button>
 			<button id='reset-btn'>Reset</button>
+			<button id='bet-btn'></button>
 				<!-- dealer cards positions -->
 			<div id = 'card-container'>
 					<img id='dealer-card-one' class='cards' src='images/10_of_hearts.png'>
@@ -32,31 +33,37 @@
 					<img id='dealer-card-three' class='cards' src='images/10_of_hearts.png'>
 					<img id='dealer-card-four' class='cards' src='images/10_of_hearts.png'>
 					<img id='dealer-card-five' class='cards' src='images/10_of_hearts.png'>
+
 					<!-- player 1 cards -->
+					<img id='pOneUp' class='pUp' src = 'images/pOneUpButton.png'>
 					<img id='playerOne-card-one' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerOne-card-two' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerOne-card-three' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerOne-card-four' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerOne-card-five' class='cards' src='images/10_of_hearts.png'>
 					<!-- player 2 cards -->
+					<img id='pTwoUp' class='pUp' src = 'images/pTwoUpButton.png'>
 					<img id='playerTwo-card-one' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerTwo-card-two' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerTwo-card-three' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerTwo-card-four' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerTwo-card-five' class='cards' src='images/10_of_hearts.png'>
 					<!-- player 3 cards -->
+					<img id='pThreeUp' class='pUp' src = 'images/pThreeUpButton.png'>
 					<img id='playerThree-card-one' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerThree-card-two' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerThree-card-three' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerThree-card-four' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerThree-card-five' class='cards' src='images/10_of_hearts.png'>
 					<!-- player 4 cards -->
+					<img id='pFourUp' class='pUp' src = 'images/pFourUpButton.png'>
 					<img id='playerFour-card-one' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerFour-card-two' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerFour-card-three' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerFour-card-four' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerFour-card-five' class='cards' src='images/10_of_hearts.png'>
 					<!-- player 5 cards -->
+					<img id='pFiveUp' class='pUp' src = 'images/pFiveUpButton.png'>
 					<img id='playerFive-card-one' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerFive-card-two' class='cards' src='images/10_of_hearts.png'>
 					<img id='playerFive-card-three' class='cards' src='images/10_of_hearts.png'>
@@ -73,10 +80,12 @@
 			</div>
 				<!-- player action bar -->
 			<div id="player-bar">
-				<p id='bet'>Current Bet</p>
+				<p id='bet'>Bet</p>
 				<p id="current-bet">0$</p>
+				<img id='place-bet-btn' src='images/check.png'>
 				<button id='stay-btn'>Stay</button>
 				<button id='hit-btn'>Hit</button>
+				<button id='double-btn'>D Down</button>
 				<button id='split-btn'>Split</button>
 			</div>
 		</div>
