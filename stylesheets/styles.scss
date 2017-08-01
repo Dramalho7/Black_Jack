@@ -53,6 +53,9 @@ body {
 			    font-family: sans-serif;
 			    text-align: center;
 			}
+			#reset-btn {
+				@extend #deal-btn
+			}
 			#deal-btn:hover {
 				background-color:yellow;
 				color:#116C0E;

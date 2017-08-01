@@ -28,7 +28,7 @@ body {
           margin: 0px; }
         body #table-container #object-container #standings-bar .pOne {
           color: white; }
-      body #table-container #object-container #deal-btn {
+      body #table-container #object-container #deal-btn, body #table-container #object-container #reset-btn {
         background-color: white;
         margin-top: 10px;
         margin-left: 75%;
@@ -39,7 +39,7 @@ body {
         font-size: 18px;
         font-family: sans-serif;
         text-align: center; }
-      body #table-container #object-container #deal-btn:hover {
+      body #table-container #object-container #deal-btn:hover, body #table-container #object-container #reset-btn:hover {
         background-color: yellow;
         color: #116C0E; }
       body #table-container #object-container #card-container {

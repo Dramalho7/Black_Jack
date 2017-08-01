@@ -18,7 +18,7 @@ function Player(nickname, cardImage, money, cardValue){
 	this.playerHand = [];
 	
 }
-
+		// card constructor
 function Cards(value, image, isAce) {
 	this.value = value,
 	this.image = image,
@@ -34,11 +34,10 @@ Player.prototype = Object.create(Cards.prototype);
 
 		// deal 											GamePlay
 Dealer.prototype.deal = function() {
-	var deckLength = this.deck.length - 1;
-	var numberOfPlayers = this.players.length - 1;
+		var deckLength = this.deck.length - 1;
+		var numberOfPlayers = this.players.length - 1;
 	
-		//dealers deal
-	for (var i = 0; i <= 1; i++) {
+		//dealers deal card 1
 		var randomCardNumber = Math.floor(Math.random() * deckLength);
 		deckLength--;
 		//random card
@@ -50,9 +49,20 @@ Dealer.prototype.deal = function() {
 		// pop card up in doc
 		document.getElementById('dealer-card-one').src = card.image;
 		document.getElementById('dealer-card-one').style.display = 'inherit'
-		document.getElementById('dealer-card-two').style.display = 'inherit'
 		this.deck.splice(randomCardNumber, 1);
-	}
+		var randomCardNumber = Math.floor(Math.random() * deckLength);
+		deckLength--;
+		//random card
+		var card = this.deck[randomCardNumber];
+		var num = card.value;
+		//set value to player hand
+		this.cardValue = this.cardValue + num;
+		this.dealerHand.push(card); 
+		// pop card up in doc
+		document.getElementById('dealer-card-two').style.display = 'inherit'
+		document.getElementById('dealer-card-two').src = 'images/back.png'
+		this.deck.splice(randomCardNumber, 1);
+
 		//players deal
 	for (var i = 0; i <= numberOfPlayers; i++) {
 			var currentPlayer = this.players[i];
@@ -98,6 +108,7 @@ Dealer.prototype.checkValue = function(player) {
 		dealer.stay()
 	} else if (player.cardValue > 21) {
 		alert(player.nickname + ' ' + 'You lose')
+		dealer.stay()
 	} else {
 		return (null)
 	}
@@ -143,6 +154,12 @@ Dealer.prototype.dealerPlay = function() {
 	deckLength--;
 	var card = this.deck[randomCardNumber];
 	var num = card.value;
+	var cardImage = dealer.name;
+	var image = cardImage + 'two'
+	var reveal = this.dealerHand[1].image;
+	document.getElementById(image).src = reveal;
+	document.getElementById(image).style.display = 'inherit'
+	console.log(this.cardValue)
 	if (this.cardValue >= 16) {
 		dealer.compare()
 	}else {
@@ -155,21 +172,26 @@ Dealer.prototype.dealerPlay = function() {
 		x++
 		dealer.dealerPlay();
 	}
+	x = 0;
 }
 
 	//compare scores
 Dealer.prototype.compare = function() {
 	x = 0;
-	var length = this.players.length - 1
-	for (i = 0; i <= length; i++) {
+	var length = this.players.length
+	for (i = 0; i < length; i++) {
 		if(this.cardValue > 21) {
 			alert (this.players[i].nickname + ' ' + 'You win')
 		} else if (this.cardValue > this.players[i].cardValue) {
 			alert (this.players[i].nickname + ' ' + 'You lose')
 		} else if (this.cardValue === this.players[i].cardValue) {
 			alert (this.players[i].nickname + ' ' + 'push')
-		} else (this.players[i].nickname + ' ' + 'You win')
-	}
+		} else { 
+			alert (this.players[i].nickname + ' ' + 'You win')
+		}	
+	} x = 0;
+	  currentPlayerSpot = 0;
+	  dealer.addCards();
 }
 
 
@@ -177,6 +199,23 @@ Dealer.prototype.compare = function() {
 
 
 		// resets the deck to all 52 cards
+Dealer.prototype.resetHands = function() {
+		var length = this.players.length
+	for (i = 0; i < length; i++) {
+		var currentPlayer = this.players[i];
+		currentPlayer.cardValue = 0;
+		currentPlayer.playerHand = [];
+	}
+		this.deck = [];
+		this.dealerHand = [];
+		this.cardValue = 0;
+
+		$('.cards').hide()
+}
+
+
+
+
 
 Dealer.prototype.addCards = function() {
 	this.deck = [];
@@ -276,70 +315,71 @@ Dealer.prototype.addCards = function() {
 				//card instances			
 
 					// card instances
-var twoOfClubs = new Cards(2, 'images/2_of_clubs.png', false);
-var twoOfSpades = new Cards(2, 'images/2_of_spades.png', false);
-var twoOfHearts = new Cards(2, 'images/2_of_hearts.png', false);
-var twoOfDiamonds = new Cards(2, 'images/2_of_diamonds.png', false);
-							//3
-var threeOfClubs = new Cards(3, 'images/3_of_clubs.png', false);
-var threeOfSpades = new Cards(3, 'images/3_of_spades.png', false);
-var threeOfHearts = new Cards(3, 'images/3_of_hearts.png', false);
-var threeOfDiamonds = new Cards(3, 'images/3_of_diamonds.png', false);
-							//4
-var fourOfClubs = new Cards(4, 'images/4_of_clubs.png', false);
-var fourOfSpades = new Cards(4, 'images/4_of_spades.png', false);
-var fourOfHearts = new Cards(4, 'images/4_of_hearts.png', false);
-var fourOfDiamonds = new Cards(4, 'images/4_of_diamonds.png', false);
-							//5
-var fiveOfClubs = new Cards(5, 'images/5_of_clubs.png', false);
-var fiveOfSpades = new Cards(5, 'images/5_of_spades.png', false);
-var fiveOfHearts = new Cards(5, 'images/5_of_hearts.png', false);
-var fiveOfDiamonds = new Cards(5, 'images/5_of_diamonds.png', false);
-							//6
-var sixOfClubs = new Cards(6, 'images/6_of_clubs.png', false);
-var sixOfSpades = new Cards(6, 'images/6_of_spades.png', false);
-var sixOfHearts = new Cards(6, 'images/6_of_hearts.png', false);
-var sixOfDiamonds = new Cards(6, 'images/6_of_diamonds.png', false);
-							//7
-var sevenOfClubs = new Cards(7, 'images/7_of_clubs.png', false);
-var sevenOfSpades = new Cards(7, 'images/7_of_spades.png', false);
-var sevenOfHearts = new Cards(7, 'images/7_of_hearts.png', false);
-var sevenOfDiamonds = new Cards(7, 'images/7_of_diamonds.png', false);
-							//8
-var eightOfClubs = new Cards(8, 'images/8_of_clubs.png', false);
-var eightOfSpades = new Cards(8, 'images/8_of_spades.png', false);
-var eightOfHearts = new Cards(8, 'images/8_of_hearts.png', false);
-var eightOfDiamonds = new Cards(8, 'images/8_of_diamonds.png', false);
-							//9
-var nineOfClubs = new Cards(9, 'images/9_of_clubs.png', false);
-var nineOfSpades = new Cards(9, 'images/9_of_spades.png', false);
-var nineOfHearts = new Cards(9, 'images/9_of_hearts.png', false);
-var nineOfDiamonds = new Cards(9, 'images/9_of_diamonds.png', false);
-							//10
-var tenOfClubs = new Cards(10, 'images/10_of_clubs.png', false);
-var tenOfSpades = new Cards(10, 'images/10_of_spades.png', false);
-var tenOfHearts = new Cards(10, 'images/10_of_hearts.png', false);
-var tenOfDiamonds = new Cards(10, 'images/10_of_diamonds.png', false);
-							//jacks
-var jackOfClubs = new Cards(10, 'images/jack_of_clubs2.png', false);
-var jackOfSpades = new Cards(10, 'images/jack_of_spades2.png', false);
-var jackOfHearts = new Cards(10, 'images/jack_of_hearts2.png', false);
-var jackOfDiamonds = new Cards(10, 'images/jack_of_diamonds2.png', false);
-							//queens
-var queenOfClubs = new Cards(10, 'images/queen_of_clubs2.png', false);
-var queenOfSpades = new Cards(10, 'images/queen_of_spades2.png', false);
-var queenOfHearts = new Cards(10, 'images/queen_of_hearts2.png', false);
-var queenOfDiamonds = new Cards(10, 'images/queen_of_diamonds2.png', false);
-							//kings
-var kingOfClubs = new Cards(10, 'images/king_of_clubs2.png', false);
-var kingOfSpades = new Cards(10, 'images/king_of_spades2.png', false);
-var kingOfHearts = new Cards(10, 'images/king_of_hearts2.png', false);
-var kingOfDiamonds = new Cards(10, 'images/king_of_diamonds2.png', false);
-							//aces
-var aceOfClubs = new Cards(11, 'images/ace_of_clubs.png', true);
-var aceOfSpades = new Cards(11, 'images/ace_of_spades2.png', true);
-var aceOfHearts = new Cards(11, 'images/ace_of_hearts.png', true);
-var aceOfDiamonds = new Cards(11, 'images/ace_of_diamonds.png', true);
+//card instances
+	var twoOfClubs = new Cards(2, 'images/2_of_clubs.png', false);
+	var twoOfSpades = new Cards(2, 'images/2_of_spades.png', false);
+	var twoOfHearts = new Cards(2, 'images/2_of_hearts.png', false);
+	var twoOfDiamonds = new Cards(2, 'images/2_of_diamonds.png', false);
+								//3
+	var threeOfClubs = new Cards(3, 'images/3_of_clubs.png', false);
+	var threeOfSpades = new Cards(3, 'images/3_of_spades.png', false);
+	var threeOfHearts = new Cards(3, 'images/3_of_hearts.png', false);
+	var threeOfDiamonds = new Cards(3, 'images/3_of_diamonds.png', false);
+								//4
+	var fourOfClubs = new Cards(4, 'images/4_of_clubs.png', false);
+	var fourOfSpades = new Cards(4, 'images/4_of_spades.png', false);
+	var fourOfHearts = new Cards(4, 'images/4_of_hearts.png', false);
+	var fourOfDiamonds = new Cards(4, 'images/4_of_diamonds.png', false);
+								//5
+	var fiveOfClubs = new Cards(5, 'images/5_of_clubs.png', false);
+	var fiveOfSpades = new Cards(5, 'images/5_of_spades.png', false);
+	var fiveOfHearts = new Cards(5, 'images/5_of_hearts.png', false);
+	var fiveOfDiamonds = new Cards(5, 'images/5_of_diamonds.png', false);
+								//6
+	var sixOfClubs = new Cards(6, 'images/6_of_clubs.png', false);
+	var sixOfSpades = new Cards(6, 'images/6_of_spades.png', false);
+	var sixOfHearts = new Cards(6, 'images/6_of_hearts.png', false);
+	var sixOfDiamonds = new Cards(6, 'images/6_of_diamonds.png', false);
+								//7
+	var sevenOfClubs = new Cards(7, 'images/7_of_clubs.png', false);
+	var sevenOfSpades = new Cards(7, 'images/7_of_spades.png', false);
+	var sevenOfHearts = new Cards(7, 'images/7_of_hearts.png', false);
+	var sevenOfDiamonds = new Cards(7, 'images/7_of_diamonds.png', false);
+								//8
+	var eightOfClubs = new Cards(8, 'images/8_of_clubs.png', false);
+	var eightOfSpades = new Cards(8, 'images/8_of_spades.png', false);
+	var eightOfHearts = new Cards(8, 'images/8_of_hearts.png', false);
+	var eightOfDiamonds = new Cards(8, 'images/8_of_diamonds.png', false);
+								//9
+	var nineOfClubs = new Cards(9, 'images/9_of_clubs.png', false);
+	var nineOfSpades = new Cards(9, 'images/9_of_spades.png', false);
+	var nineOfHearts = new Cards(9, 'images/9_of_hearts.png', false);
+	var nineOfDiamonds = new Cards(9, 'images/9_of_diamonds.png', false);
+								//10
+	var tenOfClubs = new Cards(10, 'images/10_of_clubs.png', false);
+	var tenOfSpades = new Cards(10, 'images/10_of_spades.png', false);
+	var tenOfHearts = new Cards(10, 'images/10_of_hearts.png', false);
+	var tenOfDiamonds = new Cards(10, 'images/10_of_diamonds.png', false);
+								//jacks
+	var jackOfClubs = new Cards(10, 'images/jack_of_clubs2.png', false);
+	var jackOfSpades = new Cards(10, 'images/jack_of_spades2.png', false);
+	var jackOfHearts = new Cards(10, 'images/jack_of_hearts2.png', false);
+	var jackOfDiamonds = new Cards(10, 'images/jack_of_diamonds2.png', false);
+								//queens
+	var queenOfClubs = new Cards(10, 'images/queen_of_clubs2.png', false);
+	var queenOfSpades = new Cards(10, 'images/queen_of_spades2.png', false);
+	var queenOfHearts = new Cards(10, 'images/queen_of_hearts2.png', false);
+	var queenOfDiamonds = new Cards(10, 'images/queen_of_diamonds2.png', false);
+								//kings
+	var kingOfClubs = new Cards(10, 'images/king_of_clubs2.png', false);
+	var kingOfSpades = new Cards(10, 'images/king_of_spades2.png', false);
+	var kingOfHearts = new Cards(10, 'images/king_of_hearts2.png', false);
+	var kingOfDiamonds = new Cards(10, 'images/king_of_diamonds2.png', false);
+								//aces
+	var aceOfClubs = new Cards(11, 'images/ace_of_clubs.png', true);
+	var aceOfSpades = new Cards(11, 'images/ace_of_spades2.png', true);
+	var aceOfHearts = new Cards(11, 'images/ace_of_hearts.png', true);
+	var aceOfDiamonds = new Cards(11, 'images/ace_of_diamonds.png', true);
 							
 							//Dealer Instance
 var dealer = new Dealer('dealer-card-', 0, 0);
@@ -384,8 +424,15 @@ document.getElementById('player-five').addEventListener('click', function(){
 
 
 $('document').ready(function(){
-	dealer.addCards();
 	dealer.addPlayer(playerOne);
+	$('#reset-btn').hide();
+	$('#deal-btn').show();
+})
+
+$('#reset-btn').click(function(){
+	dealer.resetHands()
+	$('#deal-btn').show();
+	$('#reset-btn').hide();
 })
 
 
@@ -393,8 +440,16 @@ $('document').ready(function(){
 $('#deal-btn').click(function(){
 	dealer.addCards();
 	dealer.deal();
-	$('#deal-btn').text();
+	$('#deal-btn').hide();
+	$('#reset-btn').show();
 })
 
+$('#hit-btn').click(function(){
+	dealer.hit();
+})
+
+$('#stay-btn').click(function() {
+	dealer.stay();
+})
 
 
