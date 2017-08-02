@@ -3,7 +3,7 @@
 3. place where cards will appear when they are called.
 4. build a box of buttons for the user to interact with.
 5. begin the functionality
-	a. object creators , link and, buld player adder.
+	a. object creators , link and, build player adder.
 	b. how to store value of cards.
 	c. how to make a player instance on the event of a clicked add player buttons
 	d. deal the cards
@@ -16,12 +16,24 @@
 	f. hit and stay buttons
 	g. make it reset
 
-	h. Ace also can be one
+	h. Ace also can be one automatically
 	i. Show which player is up
 	j. gambling
-		all bets must come before it deals except double down
+		- all bets must come before it deals except double down
+		- double down feature
+		- insurance feature
 
-	k. 
-	k. split
+
+What I would change with more time...
+	1. add a split feature
+	2. havecmore user friendy buttons. Can be hard to realize what to push because buttons are so small.
+	3. have the cards deal out one at a time from the top
+	4. have a new way to say who won the hand rather than just an alert. 
+	5. have a way to delete players or take out those who lost
+
+a lot more time
+	1. have a sign in so players can make their own name.
+	2. remember the players that sign in and what they had previously had in terms of money so they can continue to earn/ lose. 
+	3. enter in a money amount you want to risk 
 
 	 
