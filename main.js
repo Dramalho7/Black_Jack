@@ -36,16 +36,17 @@ Player.prototype = Object.create(Cards.prototype);
 
 
 		
-		// deal ------------------------------------------------------------------GamePlay
+// deal ------------------------------------------------------------------GamePlay
 Dealer.prototype.deal = function() {
 		$('#hit-btn').show();
 		$('#stay-btn').show();
 		$('#double-btn').show();
+		$('#hand').animate({right: '-700px'}, 2002)
 		$('#hand').hide()
 		var deckLength = this.deck.length - 1;
 		var numberOfPlayers = this.players.length - 1;
 	
-		//dealers deal card 1
+			//dealers deal card 1
 		var randomCardNumber = Math.floor(Math.random() * deckLength);
 		deckLength--;
 		//random card
@@ -58,6 +59,7 @@ Dealer.prototype.deal = function() {
 		document.getElementById('dealer-card-one').src = card.image;
 		document.getElementById('dealer-card-one').style.display = 'inherit'
 		this.deck.splice(randomCardNumber, 1);
+			//dealers deal card 2
 		var randomCardNumber = Math.floor(Math.random() * deckLength);
 		deckLength--;
 		//random card
@@ -71,48 +73,49 @@ Dealer.prototype.deal = function() {
 		document.getElementById('dealer-card-two').src = 'images/back.png'
 		this.deck.splice(randomCardNumber, 1);
 
-		//players deal
+			//players deal
 
-	for (var i = 0; i <= numberOfPlayers; i++) {
-			
-			var currentPlayer = this.players[i];
-			// makes random number based on current length of deck
-			document.getElementById(this.players[i].target).innerHTML = this.players[i].money;
-			var randomCardNumber = Math.floor(Math.random() * deckLength);
-			deckLength--;
-			var card = this.deck[randomCardNumber];
-			var num = card.value;
-			//gives value to players hand
-			currentPlayer.cardValue = currentPlayer.cardValue + num;
-			//adds card to player hand array
-			currentPlayer.playerHand.push(card);
-			// places card in correct spot
-			
-			var currentSpot = currentPlayer.cardImage + 'one'
-			document.getElementById(currentSpot).src = card.image;
-			document.getElementById(currentSpot).style.display = 'inherit'
-			this.deck.splice(randomCardNumber, 1);
-			// does it a second time
-			var currentPlayer = this.players[i];
-			// makes random number based on current length of deck
-			var randomCardNumber = Math.floor(Math.random() * deckLength);
-			deckLength--;
-			var card = this.deck[randomCardNumber];
-			var num = card.value;
-			//gives value to players hand
-			currentPlayer.cardValue = currentPlayer.cardValue + num;
-			//adds card to player hand array
-			currentPlayer.playerHand.push(card);
-			// places card in correct spot
-			var currentSpot = currentPlayer.cardImage + 'two'
-			document.getElementById(currentSpot).src = card.image;
-			document.getElementById(currentSpot).style.display = 'inherit'
-			this.deck.splice(randomCardNumber, 1);
-			dealer.checkBlackJack(currentPlayer);
-	}
+		for (var i = 0; i <= numberOfPlayers; i++) {
+				
+				var currentPlayer = this.players[i];
+				// makes random number based on current length of deck
+				document.getElementById(this.players[i].target).innerHTML = this.players[i].money;
+				var randomCardNumber = Math.floor(Math.random() * deckLength);
+				deckLength--;
+				var card = this.deck[randomCardNumber];
+				var num = card.value;
+				//gives value to players hand
+				currentPlayer.cardValue = currentPlayer.cardValue + num;
+				//adds card to player hand array
+				currentPlayer.playerHand.push(card);
+				// places card in correct spot
+				
+				var currentSpot = currentPlayer.cardImage + 'one'
+				document.getElementById(currentSpot).src = card.image;
+				document.getElementById(currentSpot).style.display = 'inherit'
+				this.deck.splice(randomCardNumber, 1);
+				// does it a second time
+				var currentPlayer = this.players[i];
+				// makes random number based on current length of deck
+				var randomCardNumber = Math.floor(Math.random() * deckLength);
+				deckLength--;
+				var card = this.deck[randomCardNumber];
+				var num = card.value;
+				//gives value to players hand
+				currentPlayer.cardValue = currentPlayer.cardValue + num;
+				//adds card to player hand array
+				currentPlayer.playerHand.push(card);
+				// places card in correct spot
+				var currentSpot = currentPlayer.cardImage + 'two'
+				document.getElementById(currentSpot).src = card.image;
+				document.getElementById(currentSpot).style.display = 'inherit'
+				this.deck.splice(randomCardNumber, 1);
+				dealer.checkBlackJack(currentPlayer);
+		}
 }
 
-	//check value of current player for black jack or going over --------------------------------
+//check value of current player for 21 or going over 
+//automatically passes if either occurs
 Dealer.prototype.checkValue = function(player) {
 	if (player.cardValue === 21) {
 		dealer.stay()
@@ -124,6 +127,8 @@ Dealer.prototype.checkValue = function(player) {
 		return (null)
 	}
 }
+
+// checks to see if player gets blackJack
 Dealer.prototype.checkBlackJack = function(player) {
 	if (player.cardValue === 21) {
 		this.players[currentPlayerSpot].currentBet = this.players[currentPlayerSpot].currentBet * 1.5
@@ -133,10 +138,9 @@ Dealer.prototype.checkBlackJack = function(player) {
 	}
 }
 
-
-var timesHit = ['three', 'four', 'five'];
-var x = 0;
-	//HIT   ------------------------------------------------------------------
+//HIT   
+	var timesHit = ['three', 'four', 'five'];
+	var x = 0;   
 Dealer.prototype.hit = function() {
 	var deckLength = this.deck.length - 1;
 	var currentPlayer = this.players[this.currentPlayerSpot];
@@ -160,7 +164,7 @@ Dealer.prototype.hit = function() {
 	x++;
 }
 
-	//stay ------------------------------------------------------------------
+//stay 
 Dealer.prototype.stay = function() {
 	x = 0;
 	if (this.players.length - 1 === this.currentPlayerSpot) {
@@ -178,7 +182,8 @@ Dealer.prototype.stay = function() {
 		dealer.playerTurn()
 	}
 }
-	// Dealer logic ------------------------------------------------------------------
+
+// Dealer logic ------------------------------------------------------------------ logic
 var hasAce = false;
 Dealer.prototype.dealerPlay = function() {
 	var cardImage = dealer.name;
@@ -192,27 +197,27 @@ Dealer.prototype.dealerPlay = function() {
 	var card = this.deck[randomCardNumber];
 	var num = card.value;
 	dealer.hasAce()
-	if (this.cardValue > 21 && hasAce === true) {
-		dealer.dealerAce()
-		dealer.dealerPlay();
-		
-		} else if (this.cardValue >= 16) {
-			dealer.compare()
+		if (this.cardValue > 21 && hasAce === true) {
+			dealer.dealerAce()
+			dealer.dealerPlay();
+			
+			} else if (this.cardValue >= 16) {
+				dealer.compare()
 
-			}else {
-				this.cardValue = this.cardValue + num;
-				this.dealerHand.push(card); 
-				var cardImage = dealer.name;
-				var currentSpot = cardImage + timesHit[x]
-				document.getElementById(currentSpot).src = card.image;
-				document.getElementById(currentSpot).style.display = 'inherit'
-				x++
-				dealer.dealerPlay();
-	}
+				}else {
+					this.cardValue = this.cardValue + num;
+					this.dealerHand.push(card); 
+					var cardImage = dealer.name;
+					var currentSpot = cardImage + timesHit[x]
+					document.getElementById(currentSpot).src = card.image;
+					document.getElementById(currentSpot).style.display = 'inherit'
+					x++
+					dealer.dealerPlay();
+		}
 	x = 0;
 }
 
-	//compare scores ------------------------------------------------------------------
+//compare scores of players to dealer
 Dealer.prototype.compare = function() {
 	x = 0;
 	var length = this.players.length
@@ -222,20 +227,20 @@ Dealer.prototype.compare = function() {
 			this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
 			this.players[i].currentBet = 0;
 			document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
-			alert(this.players[i].nickname + ' ' + 'You got WON the hand!')
+			alert(this.players[i].nickname + ' ' + 'You WON the hand!')
 			this.players[i].currentBet = 0
 			
 			} else if (this.players[i].cardValue > 21) {
 				this.players[i].currentBet = 0;
 				document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 				this.players[i].currentBet = 0
-				alert(this.players[i].nickname + ' ' + 'You got LOST the hand.')
+				alert(this.players[i].nickname + ' ' + 'You LOST the hand.')
 				
 				} else if (this.cardValue > this.players[i].cardValue) {
 					this.players[i].currentBet = 0;
 					document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 					this.players[i].currentBet = 0
-					alert(this.players[i].nickname + ' ' + 'You got LOST the hand.')
+					alert(this.players[i].nickname + ' ' + 'You LOST the hand.')
 				
 					} else if (this.cardValue === this.players[i].cardValue) {
 						this.players[i].money = this.players[i].money + this.players[i].currentBet;
@@ -247,7 +252,7 @@ Dealer.prototype.compare = function() {
 							this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
 							document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 							this.players[i].currentBet = 0
-							alert(this.players[i].nickname + ' ' + 'You got WON the hand!')
+							alert(this.players[i].nickname + ' ' + 'You WON the hand!')
 
 						}	
 	} x = 0;
@@ -256,8 +261,8 @@ Dealer.prototype.compare = function() {
 	$('#pOneUp').show();
 	  dealer.addCards();
 }
-		// Ace to 1 function for players ------------------------------------------------------------------
-
+		
+//checks to see if dealer hads an ace
 Dealer.prototype.hasAce = function() {
 	var i = this.dealerHand.length;
 	
@@ -272,6 +277,7 @@ Dealer.prototype.hasAce = function() {
 	return null;
 }
 
+// Ace to 1 funtion for players
 Dealer.prototype.ace = function(player) {
 	var i = player.playerHand.length;
 	
@@ -280,13 +286,13 @@ Dealer.prototype.ace = function(player) {
 		if (player.playerHand[i].value === 11) {
 			player.playerHand[i].value = 1;
 			player.cardValue = player.cardValue - 10;
-			return null 									// check
+			return null 									
 		} 
 	}
 
 	return null;
 }
-		// Ace to 1 function for dealer ------------------------------------------------------------------
+// Ace to 1 function for dealer 
 Dealer.prototype.dealerAce = function() {
 	var i = this.dealerHand.length;
 	
@@ -302,13 +308,13 @@ Dealer.prototype.dealerAce = function() {
 }
 
 
-	// ------------------------------------------------------- Gambling
- 	// asks players to make initial bets
- 	//adds value to current bet from current money
+// ------------------------------------------------------- Gambling
+ 	
 
-$('#bet-btn').click(function(){
-	dealer.requireBets()
-})
+//listens for amount to bet click functions
+	$('#bet-btn').click(function(){
+		dealer.requireBets()
+	})
 
 
 	var allinBtn = document.getElementById('allin-btn')
@@ -317,7 +323,6 @@ $('#bet-btn').click(function(){
 	var tenBtn = document.getElementById('ten-btn');
 	var twentyBtn = document.getElementById('twenty-btn');
 			
-			//listens for amount to bet
 	allinBtn.addEventListener('click', function(){
 		dealer.players[dealer.currentPlayerSpot].currentBet = parseInt(dealer.players[dealer.currentPlayerSpot].money)
 		document.getElementById('current-bet').innerHTML = dealer.players[dealer.currentPlayerSpot].currentBet + '$';
@@ -360,6 +365,8 @@ $('#place-bet-btn').click(function() {
 	$('.new-player-btn').hide()
 })
 
+
+// applies the bet amount entered by the player
 Dealer.prototype.requireBets = function(){
 	var currentPlayer = this.players[this.currentPlayerSpot];
 	var bet = currentPlayer.currentBet;
@@ -371,7 +378,7 @@ Dealer.prototype.requireBets = function(){
 }
 
 
-
+// signifies if all players have bet or not
 Dealer.prototype.allBetsOff = function(){
 	this.currentPlayerSpot++;
 	dealer.playerTurn()
@@ -388,11 +395,9 @@ Dealer.prototype.allBetsOff = function(){
 		return null;
 	}
 }
-function hand() {
-	$('#hand').show()
-	$('#hand').animate({right: '700px'}, 3000)
-}
 
+
+//double down feature
 Dealer.prototype.doubleDown = function() {
 	if (this.players[this.currentPlayerSpot].money >= this.players[this.currentPlayerSpot].currentBet) {
 		this.players[this.currentPlayerSpot].money = this.players[this.currentPlayerSpot].money - this.players[this.currentPlayerSpot].currentBet;
@@ -405,60 +410,63 @@ Dealer.prototype.doubleDown = function() {
 		$('#double-btn').hide();
 		alert ('not enough money')
 	}
-
 }
 
-// Dealer.prototype.split = function() {
-// 	if (this.players[this.currentPlayerSpot].playerHand[0]===this.players[this.currentPlayerSpot].playerHand[1]{
 
-// 	}
-// }
-		// resets everything but chips ------------------------------------------------------------------
+
+// resets everything but chips ------------------------------------------------------------------
 Dealer.prototype.resetHands = function() {
-		var length = this.players.length
+	var length = this.players.length
 	for (i = 0; i < length; i++) {
 		var currentPlayer = this.players[i];
 		currentPlayer.cardValue = 0;
 		currentPlayer.playerHand = [];
 	}
-		this.deck = [];
-		this.dealerHand = [];
-		this.cardValue = 0;
-		aceOfSpades.value = 11
-		aceOfClubs.value = 11
-		aceOfHearts.value = 11
-		aceOfDiamonds.value = 11
-		var hasAce = false;
-		$('.cards').hide();
-		$('.pUp').hide();
-		$('#pOneUp').show();
-		$('#hit-btn').hide();
-		$('#stay-btn').hide();
-		$('#double-btn').hide();
-		$('.chips').show()
-		$('#place-bet-btn').show()
+	this.deck = [];
+	this.dealerHand = [];
+	this.cardValue = 0;
+	aceOfSpades.value = 11
+	aceOfClubs.value = 11
+	aceOfHearts.value = 11
+	aceOfDiamonds.value = 11
+	var hasAce = false;
+	$('.cards').hide();
+	$('.pUp').hide();
+	$('#pOneUp').show();
+	$('#hit-btn').hide();
+	$('#stay-btn').hide();
+	$('#double-btn').hide();
+	$('.chips').show()
+	$('#place-bet-btn').show()
 		
 }
-	// turns on the player up------------------------------------------------------------------ other
-Dealer.prototype.playerTurn = function() {
-	var length = this.players.length
-	if (length === 1) {
-		return null;
-	} else if (this.currentPlayerSpot < length){
-		var previousSpot = this.players[this.currentPlayerSpot-1].targetTwo;
-		var spot = this.players[this.currentPlayerSpot].targetTwo;
-		var spot = '#'+spot
-		var previousSpot = '#'+previousSpot
-		$(previousSpot).hide()
-		$(spot).show()
-	} else {
-		$('.pUp').hide();
-		$('#pOneUp').show();
+
+
+
+
+// turns on the player up icon------------------------------------------------------------------ other
+	Dealer.prototype.playerTurn = function() {
+		var length = this.players.length
+		if (length === 1) {
+			return null;
+		} else if (this.currentPlayerSpot < length){
+			var previousSpot = this.players[this.currentPlayerSpot-1].targetTwo;
+			var spot = this.players[this.currentPlayerSpot].targetTwo;
+			var spot = '#'+spot
+			var previousSpot = '#'+previousSpot
+			$(previousSpot).hide()
+			$(spot).show()
+		} else {
+			$('.pUp').hide();
+			$('#pOneUp').show();
+		}
 	}
-}
 
 	// adds cards
-Dealer.prototype.addCards = function() {
+
+
+//adds cards to dealers hand
+	Dealer.prototype.addCards = function() {
 	this.deck = [];
 	this.deck.push(twoOfClubs);
 	this.deck.push(twoOfSpades);
@@ -556,6 +564,7 @@ Dealer.prototype.addCards = function() {
 				//card instances			
 
 					// card instances
+
 //card instances
 	var twoOfClubs = new Cards(2, 'images/2_of_clubs.png', false);
 	var twoOfSpades = new Cards(2, 'images/2_of_spades.png', false);
@@ -623,101 +632,109 @@ Dealer.prototype.addCards = function() {
 	var aceOfDiamonds = new Cards(11, 'images/ace_of_diamonds.png', true);
 							
 							//Dealer Instance
-var dealer = new Dealer('dealer-card-', 0, 0);
+
+//dealer instance
+	var dealer = new Dealer('dealer-card-', 0, 0);
 
 
-						// player instances
+// player instances
 
-					//adds player too table
-Dealer.prototype.addPlayer = function(player) {
-	this.players.push(player);
-}
+//adds player too table
+	Dealer.prototype.addPlayer = function(player) {
+		this.players.push(player);
+	}
 								//me
+
+
+
+
+//Player 1 - 5 on click instances
 var playerOne = new Player('Dan', 'playerOne-card-', 100, 0, 0, 'moneyOne', 'pOneUp');
-						//Player 2 - 5 on click instances
-
-
 var playerTwo;
 var playerThree;
 var playerFour;
 var playerFive;
 
+// player instance creator
+	document.getElementById('player-two').addEventListener('click', function(){
+		playerTwo = new Player('Player Two', 'playerTwo-card-', 100, 0, 0, 'moneyTwo', 'pTwoUp')
+		document.getElementById('player-two').style.display = 'none';
+		dealer.addPlayer(playerTwo)
+		document.getElementById('pTwoName').innerHTML = 'Player 2'
+		document.getElementById('moneyTwo').innerHTML = '100$'
+		document.getElementById('player-three').style.display = 'inherit'
+	})
+	document.getElementById('player-three').addEventListener('click', function(){
+		playerThree = new Player('Player Three', 'playerThree-card-', 100, 0, 0, 'moneyThree', 'pThreeUp')
+		document.getElementById('player-three').style.display = 'none';
+		dealer.addPlayer(playerThree)
+		document.getElementById('pThreeName').innerHTML = 'Player 3'
+		document.getElementById('moneyThree').innerHTML = '100$'
+		document.getElementById('player-four').style.display = 'inherit'
+	})
+	document.getElementById('player-four').addEventListener('click', function(){
+		playerFour = new Player('Player Four', 'playerFour-card-', 100, 0, 0, 'moneyFour', 'pFourUp')
+		document.getElementById('player-four').style.display = 'none';
+		dealer.addPlayer(playerFour)
+		document.getElementById('pFourName').innerHTML = 'Player 4'
+		document.getElementById('moneyFour').innerHTML = '100$'
+		document.getElementById('player-five').style.display = 'inherit'
+	})
+	document.getElementById('player-five').addEventListener('click', function(){
+		playerFive = new Player('Player Five', 'playerFive-card-', 100, 0, 0, 'moneyFive', 'pFiveUp')
+		document.getElementById('player-five').style.display = 'none';
+		dealer.addPlayer(playerFive)
+		document.getElementById('pFiveName').innerHTML = 'Player 5'
+		document.getElementById('moneyFive').innerHTML = '100$'
+	})
 
-document.getElementById('player-two').addEventListener('click', function(){
-	playerTwo = new Player('Player Two', 'playerTwo-card-', 100, 0, 0, 'moneyTwo', 'pTwoUp')
-	document.getElementById('player-two').style.display = 'none';
-	dealer.addPlayer(playerTwo)
-	document.getElementById('pTwoName').innerHTML = 'Player 2'
-	document.getElementById('moneyTwo').innerHTML = '100$'
-	document.getElementById('player-three').style.display = 'inherit'
-})
-document.getElementById('player-three').addEventListener('click', function(){
-	playerThree = new Player('Player Three', 'playerThree-card-', 100, 0, 0, 'moneyThree', 'pThreeUp')
-	document.getElementById('player-three').style.display = 'none';
-	dealer.addPlayer(playerThree)
-	document.getElementById('pThreeName').innerHTML = 'Player 3'
-	document.getElementById('moneyThree').innerHTML = '100$'
-	document.getElementById('player-four').style.display = 'inherit'
-})
-document.getElementById('player-four').addEventListener('click', function(){
-	playerFour = new Player('Player Four', 'playerFour-card-', 100, 0, 0, 'moneyFour', 'pFourUp')
-	document.getElementById('player-four').style.display = 'none';
-	dealer.addPlayer(playerFour)
-	document.getElementById('pFourName').innerHTML = 'Player 4'
-	document.getElementById('moneyFour').innerHTML = '100$'
-	document.getElementById('player-five').style.display = 'inherit'
-})
-document.getElementById('player-five').addEventListener('click', function(){
-	playerFive = new Player('Player Five', 'playerFive-card-', 100, 0, 0, 'moneyFive', 'pFiveUp')
-	document.getElementById('player-five').style.display = 'none';
-	dealer.addPlayer(playerFive)
-	document.getElementById('pFiveName').innerHTML = 'Player 5'
-	document.getElementById('moneyFive').innerHTML = '100$'
-})
+// click events
+	$('document').ready(function(){
+		dealer.addPlayer(playerOne);
+		$('#reset-btn').hide();
+		$('#deal-btn').hide();
+		$('#bet-btn').show();
+		$('.pUp').hide();
+		$('#pOneUp').show();
+		$('#hit-btn').hide();
+		$('#stay-btn').hide();
+		$('#double-btn').hide();
+		$('#split-btn').hide();
+		$('#hand').hide()
+	})
 
+	$('#reset-btn').click(function(){
+		dealer.resetHands()
+		$('#reset-btn').hide();
+		$('#bet-btn').show();
+	})
 
-$('document').ready(function(){
-	dealer.addPlayer(playerOne);
-	$('#reset-btn').hide();
-	$('#deal-btn').hide();
-	$('#bet-btn').show();
-	$('.pUp').hide();
-	$('#pOneUp').show();
-	$('#hit-btn').hide();
-	$('#stay-btn').hide();
-	$('#double-btn').hide();
-	$('#split-btn').hide();
-	$('#hand').hide()
-})
+	$('#bet-btn').click(function(){
+		dealer.requireBets()
+	})
+		// Calls the deal function
+	$('#deal-btn').click(function(){
+		
+		dealer.addCards();
+		dealer.deal();
+		$('#deal-btn').hide();
+		$('#reset-btn').show();
+	})
 
-$('#reset-btn').click(function(){
-	dealer.resetHands()
-	$('#reset-btn').hide();
-	$('#bet-btn').show();
-})
+	$('#hit-btn').click(function(){
+		dealer.hit();
+	})
 
-$('#bet-btn').click(function(){
-	dealer.requireBets()
-})
-	// Calls the deal function
-$('#deal-btn').click(function(){
-	
-	dealer.addCards();
-	dealer.deal();
-	$('#deal-btn').hide();
-	$('#reset-btn').show();
-})
+	$('#stay-btn').click(function() {
+		dealer.stay();
+	})
 
-$('#hit-btn').click(function(){
-	dealer.hit();
-})
+	$('#double-btn').click(function() {
+		dealer.doubleDown()
+	})
 
-$('#stay-btn').click(function() {
-	dealer.stay();
-})
-
-$('#double-btn').click(function() {
-	dealer.doubleDown()
-})
-
-
+// makes the silly hand go across the board
+function hand() {
+	$('#hand').show()
+	$('#hand').animate({right: '700px'}, 3000)
+}
