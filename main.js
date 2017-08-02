@@ -134,7 +134,7 @@ Dealer.prototype.checkValue = function(player) {
 // checks to see if player gets blackJack
 Dealer.prototype.checkBlackJack = function(player) {
 	if (player.cardValue === 21) {
-		player.currentBet = player.currentBet + player.currentBet * 1/2
+		player.currentBet = player.currentBet + player.currentBet/2
 		alert (player.nickname + ' ' + "You got BlackJack")
 	} else {
 		return (null)
@@ -159,7 +159,6 @@ Dealer.prototype.hit = function() {
 	// if the player went over because one card is an ace make the ace a one.
 
 	dealer.ace(currentPlayer)
-	//check value vs 21
 	var currentSpot = currentPlayer.cardImage + timesHit[x];
 	document.getElementById(currentSpot).src = card.image;
 	document.getElementById(currentSpot).style.display = 'inherit'
@@ -204,7 +203,14 @@ Dealer.prototype.dealerPlay = function() {
 	dealer.hasAce()
 		if (this.cardValue > 21 && hasAce === true) {
 			dealer.dealerAce()
-			dealer.dealerPlay();
+			this.cardValue = this.cardValue + num;
+			this.dealerHand.push(card); 
+			var cardImage = dealer.name;
+			var currentSpot = cardImage + timesHit[x]
+			document.getElementById(currentSpot).src = card.image;
+			document.getElementById(currentSpot).style.display = 'inherit'
+			x++
+			dealer.compare()
 			
 			} else if (this.cardValue >= 16) {
 				dealer.compare()
@@ -227,45 +233,38 @@ Dealer.prototype.compare = function() {
 	x = 0;
 	var length = this.players.length
 	for (i = 0; i < length; i++) {
-		if (this.cardValue =! 21 && this.players[i].cardValue === 21){
+		if (this.cardValue > 21 && this.players[i].cardValue <= 21) {
 			this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
 			this.players[i].currentBet = 0;
 			document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 			alert(this.players[i].nickname + ' ' + 'You WON the hand!')
 			this.players[i].currentBet = 0
-			}
-			else if(this.cardValue > 21 && this.players[i].cardValue < 21) {
-				this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
+			
+			} else if (this.players[i].cardValue > 21) {
 				this.players[i].currentBet = 0;
 				document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
-				alert(this.players[i].nickname + ' ' + 'You WON the hand!')
 				this.players[i].currentBet = 0
+				alert(this.players[i].nickname + ' ' + 'You LOST the hand.')
 				
-				} else if (this.players[i].cardValue > 21) {
+				} else if (this.cardValue > this.players[i].cardValue) {
 					this.players[i].currentBet = 0;
 					document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 					this.players[i].currentBet = 0
 					alert(this.players[i].nickname + ' ' + 'You LOST the hand.')
-					
-					} else if (this.cardValue > this.players[i].cardValue) {
-						this.players[i].currentBet = 0;
+				
+					} else if (this.cardValue === this.players[i].cardValue) {
+						this.players[i].money = this.players[i].money + this.players[i].currentBet;
 						document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 						this.players[i].currentBet = 0
-						alert(this.players[i].nickname + ' ' + 'You LOST the hand.')
+						alert(this.players[i].nickname + ' ' + 'You pushed.')
 					
-						} else if (this.cardValue === this.players[i].cardValue) {
-							this.players[i].money = this.players[i].money + this.players[i].currentBet;
+						} else { 
+							this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
 							document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 							this.players[i].currentBet = 0
-							alert(this.players[i].nickname + ' ' + 'You pushed.')
-						
-							} else { 
-								this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
-								document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
-								this.players[i].currentBet = 0
-								alert(this.players[i].nickname + ' ' + 'You WON the hand!')
+							alert(this.players[i].nickname + ' ' + 'You WON the hand!')
 
-							}	
+						}	
 	} x = 0;
 	  currentPlayerSpot = 0;
 	 $('.pUp').hide();
@@ -384,7 +383,7 @@ Dealer.prototype.requireBets = function(){
 	currentPlayer.money = currentPlayer.money - bet
 	var betBtn = document.getElementById('current-bet')
 	betBtn.innerHTML = '0$'
-	document.getElementById(this.players[this.currentPlayerSpot].target).innerHTML = this.players[this.currentPlayerSpot].money;
+	document.getElementById(this.players[this.currentPlayerSpot].target).innerHTML = '$' + this.players[this.currentPlayerSpot].money;
 	dealer.allBetsOff()
 }
 
