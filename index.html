@@ -2,6 +2,8 @@
 <html>
 <head>
 	<title>Black Jack</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
@@ -22,12 +24,14 @@
 					<h6 id='moneyFive' class='pFive'> </h6>
 			</div>
 
-				<!-- deal button -->
+				<!-- deal button and modal -->
+			<a id = 'rules' href = 'https://www.youtube.com/watch?v=qd5oc9hLrXg' target="_blank"><img src='images/rules.png'></a>
 			<button id='deal-btn'>DEAL</button>
 			<button id='reset-btn'>Reset</button>
 			<button id='bet-btn'></button>
 				<!-- dealer cards positions -->
 			<div id = 'card-container'>
+					<img id = 'hand' src='images/hand.png'>
 					<img id='dealer-card-one' class='cards' src='images/10_of_hearts.png'>
 					<img id='dealer-card-two' class='cards' src='images/back.png'>
 					<img id='dealer-card-three' class='cards' src='images/10_of_hearts.png'>
@@ -72,31 +76,30 @@
 			</div>
 				
 			<div id='chip-container'>
-				<img id='min-btn' src='images/min.png'>
-				<img id='one-btn' src='images/one.png'>
-				<img id='four-btn' src='images/four.png'>
-				<img id='ten-btn' src='images/ten.png'>
-				<img id='twenty-btn' src='images/twenty.png'>
+				<img id='allin-btn' class='chips' src='images/min.png'>
+				<img id='one-btn' class='chips' src='images/one.png'>
+				<img id='four-btn' class='chips' src='images/four.png'>
+				<img id='ten-btn' class='chips' src='images/ten.png'>
+				<img id='twenty-btn' class='chips' src='images/twenty.png'>
 			</div>
 				<!-- player action bar -->
 			<div id="player-bar">
 				<p id='bet'>Bet</p>
-				<p id="current-bet">0$</p>
+				<p id="current-bet">$0</p>
 				<img id='place-bet-btn' src='images/check.png'>
 				<button id='stay-btn'>Stay</button>
 				<button id='hit-btn'>Hit</button>
 				<button id='double-btn'>D Down</button>
-				<button id='split-btn'>Split</button>
+				<button id='split-btn'>Insurance</button>
 			</div>
 		</div>
 	</div>
 	<div id='new-players'>
-		<button id='player-two'>Add Player Two</button>
-		<button id='player-three'>Add Player Three</button>
-		<button id='player-four'>Add Player Four</button>
-		<button id='player-five'>Add Player Five</button>
+		<button id='player-two' class='new-player-btn btn btn-default'>Add Player Two</button>
+		<button id='player-three' class='new-player-btn btn btn-default'>Add Player Three</button>
+		<button id='player-four' class='new-player-btn btn btn-default'>Add Player Four</button>
+		<button id='player-five' class='new-player-btn btn btn-default'>Add Player Five</button>
 	</div>
-
 	<script
 	  src="http://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="

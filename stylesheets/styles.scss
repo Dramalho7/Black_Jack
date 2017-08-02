@@ -37,7 +37,21 @@ body {
 					margin: 0px;
 				}
 			}
-				// Deal button
+				// Deal button and modal
+			#rules{
+				position: absolute;
+				margin-top: 50px;
+			    margin-left: 200px;
+			    height: 50px;
+			    width: 60px;
+			    
+		    	img {
+		    		position: absolute;
+		    		width: 60px;
+		    		height: 50px;
+		    		// text-align: center;
+		    	}
+			}
 			#deal-btn {
 				background-color: white;
 				margin-top: 10px;
@@ -105,7 +119,14 @@ body {
 					margin-top: 340px;
 					margin-left: 100px;
 				}
-
+						//hand
+				#hand {
+					margin-left: 700px;
+					margin-top: 50px;
+					width: 200px;
+					height: 300px;
+					display: inherit;
+				}
 				#dealer-card-one{
 					margin-top: 40px;
 					margin-left: 470px;
@@ -244,42 +265,42 @@ body {
 				width: 350px;
 				position: absolute; 
 
-				#min-btn {
+				#allin-btn {
 					border-radius: 30px;
 					width: 45px;
 					margin-top: 1px;
 					margin-left: 60px;
 					position: absolute; 
 				}	
-				#min-btn:hover {
+				#allin-btn:hover {
 					width: 55px;
 				}
-				#min-btn:active{
+				#allin-btn:active{
 					width:45px;
 				}
 				#one-btn {
-					@extend #min-btn;
+					@extend #allin-btn;
 					margin-top: 26px;
 					margin-left: 111px;
 					position: absolute; 
 				}
 
 				#four-btn {
-					@extend #min-btn;
+					@extend #allin-btn;
 					margin-left: 163px;
 					margin-top: 40px;
 					position: absolute; 
 				}
 
 				#ten-btn {
-					@extend #min-btn;
+					@extend #allin-btn;
 					margin-left: 216px;
 					margin-top: 53px;
 					position: absolute; 
 				}
 				
 				#twenty-btn {
-					@extend #min-btn;
+					@extend #allin-btn;
 					margin-top: 62px;
 					margin-left: 269px;
 					position: absolute; 
@@ -306,21 +327,22 @@ body {
 					position:absolute;
 					margin-top: 53px;
 					margin-left: 28px;
-					height: 20px;
+					height: 25px;
 					width: 50px;
 					background-color: white;
 					margin-bottom: 0px;
 					text-align: center;
 					border: 2px solid black;
 					font-size: 16px;
+
 				}
 
 				#place-bet-btn {
 					position:absolute;
 					margin-top: 53px;
 					margin-left: 87px;
-					width: 20px;
-					height: 20px;
+					width: 25px;
+					height: 25px;
 					text-align: center;
 					border: 2px solid black;
 					font-size: 11px;

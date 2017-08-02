@@ -26,6 +26,16 @@ body {
         body #table-container #object-container #standings-bar h6 {
           color: white;
           margin: 0px; }
+      body #table-container #object-container #rules {
+        position: absolute;
+        margin-top: 50px;
+        margin-left: 200px;
+        height: 50px;
+        width: 60px; }
+        body #table-container #object-container #rules img {
+          position: absolute;
+          width: 60px;
+          height: 50px; }
       body #table-container #object-container #deal-btn, body #table-container #object-container #reset-btn {
         background-color: white;
         margin-top: 10px;
@@ -76,6 +86,12 @@ body {
         body #table-container #object-container #card-container #pFiveUp {
           margin-top: 340px;
           margin-left: 100px; }
+        body #table-container #object-container #card-container #hand {
+          margin-left: 700px;
+          margin-top: 50px;
+          width: 200px;
+          height: 300px;
+          display: inherit; }
         body #table-container #object-container #card-container #dealer-card-one {
           margin-top: 40px;
           margin-left: 470px; }
@@ -173,15 +189,15 @@ body {
         height: 150px;
         width: 350px;
         position: absolute; }
-        body #table-container #object-container #chip-container #min-btn, body #table-container #object-container #chip-container #one-btn, body #table-container #object-container #chip-container #four-btn, body #table-container #object-container #chip-container #ten-btn, body #table-container #object-container #chip-container #twenty-btn {
+        body #table-container #object-container #chip-container #allin-btn, body #table-container #object-container #chip-container #one-btn, body #table-container #object-container #chip-container #four-btn, body #table-container #object-container #chip-container #ten-btn, body #table-container #object-container #chip-container #twenty-btn {
           border-radius: 30px;
           width: 45px;
           margin-top: 1px;
           margin-left: 60px;
           position: absolute; }
-        body #table-container #object-container #chip-container #min-btn:hover, body #table-container #object-container #chip-container #one-btn:hover, body #table-container #object-container #chip-container #four-btn:hover, body #table-container #object-container #chip-container #ten-btn:hover, body #table-container #object-container #chip-container #twenty-btn:hover {
+        body #table-container #object-container #chip-container #allin-btn:hover, body #table-container #object-container #chip-container #one-btn:hover, body #table-container #object-container #chip-container #four-btn:hover, body #table-container #object-container #chip-container #ten-btn:hover, body #table-container #object-container #chip-container #twenty-btn:hover {
           width: 55px; }
-        body #table-container #object-container #chip-container #min-btn:active, body #table-container #object-container #chip-container #one-btn:active, body #table-container #object-container #chip-container #four-btn:active, body #table-container #object-container #chip-container #ten-btn:active, body #table-container #object-container #chip-container #twenty-btn:active {
+        body #table-container #object-container #chip-container #allin-btn:active, body #table-container #object-container #chip-container #one-btn:active, body #table-container #object-container #chip-container #four-btn:active, body #table-container #object-container #chip-container #ten-btn:active, body #table-container #object-container #chip-container #twenty-btn:active {
           width: 45px; }
         body #table-container #object-container #chip-container #one-btn {
           margin-top: 26px;
@@ -215,7 +231,7 @@ body {
           position: absolute;
           margin-top: 53px;
           margin-left: 28px;
-          height: 20px;
+          height: 25px;
           width: 50px;
           background-color: white;
           margin-bottom: 0px;
@@ -226,8 +242,8 @@ body {
           position: absolute;
           margin-top: 53px;
           margin-left: 87px;
-          width: 20px;
-          height: 20px;
+          width: 25px;
+          height: 25px;
           text-align: center;
           border: 2px solid black;
           font-size: 11px;
