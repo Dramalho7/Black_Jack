@@ -120,19 +120,22 @@ Dealer.prototype.checkValue = function(player) {
 	if (player.cardValue === 21) {
 		dealer.stay()
 		$('#double-btn').show();
+		$('#hit-btn').show()
 	} else if (player.cardValue > 21) {
 		dealer.stay()
 		$('#double-btn').show();
+		$('#hit-btn').show()
 	} else {
 		return (null)
+
 	}
 }
 
 // checks to see if player gets blackJack
 Dealer.prototype.checkBlackJack = function(player) {
 	if (player.cardValue === 21) {
-		this.players[currentPlayerSpot].currentBet = this.players[currentPlayerSpot].currentBet * 1.5
-		dealer.stay()
+		player.currentBet = player.currentBet + player.currentBet * 1/2
+		alert (player.nickname + ' ' + "You got BlackJack")
 	} else {
 		return (null)
 	}
@@ -167,6 +170,7 @@ Dealer.prototype.hit = function() {
 //stay 
 Dealer.prototype.stay = function() {
 	x = 0;
+	$('#hit-btn').show()
 	if (this.players.length - 1 === this.currentPlayerSpot) {
 		this.currentPlayerSpot = 0;
 		var cardImage = dealer.name;
@@ -180,6 +184,7 @@ Dealer.prototype.stay = function() {
 		this.currentPlayerSpot = this.currentPlayerSpot + 1;
 		$('#double-btn').show();
 		dealer.playerTurn()
+
 	}
 }
 
@@ -222,39 +227,45 @@ Dealer.prototype.compare = function() {
 	x = 0;
 	var length = this.players.length
 	for (i = 0; i < length; i++) {
-		
-		if(this.cardValue > 21 && this.players[i].cardValue < 21) {
+		if (this.cardValue =! 21 && this.players[i].cardValue === 21){
 			this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
 			this.players[i].currentBet = 0;
 			document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 			alert(this.players[i].nickname + ' ' + 'You WON the hand!')
 			this.players[i].currentBet = 0
-			
-			} else if (this.players[i].cardValue > 21) {
+			}
+			else if(this.cardValue > 21 && this.players[i].cardValue < 21) {
+				this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
 				this.players[i].currentBet = 0;
 				document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
+				alert(this.players[i].nickname + ' ' + 'You WON the hand!')
 				this.players[i].currentBet = 0
-				alert(this.players[i].nickname + ' ' + 'You LOST the hand.')
 				
-				} else if (this.cardValue > this.players[i].cardValue) {
+				} else if (this.players[i].cardValue > 21) {
 					this.players[i].currentBet = 0;
 					document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 					this.players[i].currentBet = 0
 					alert(this.players[i].nickname + ' ' + 'You LOST the hand.')
-				
-					} else if (this.cardValue === this.players[i].cardValue) {
-						this.players[i].money = this.players[i].money + this.players[i].currentBet;
+					
+					} else if (this.cardValue > this.players[i].cardValue) {
+						this.players[i].currentBet = 0;
 						document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 						this.players[i].currentBet = 0
-						alert(this.players[i].nickname + ' ' + 'You pushed.')
+						alert(this.players[i].nickname + ' ' + 'You LOST the hand.')
 					
-						} else { 
-							this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
+						} else if (this.cardValue === this.players[i].cardValue) {
+							this.players[i].money = this.players[i].money + this.players[i].currentBet;
 							document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
 							this.players[i].currentBet = 0
-							alert(this.players[i].nickname + ' ' + 'You WON the hand!')
+							alert(this.players[i].nickname + ' ' + 'You pushed.')
+						
+							} else { 
+								this.players[i].money = this.players[i].money + (this.players[i].currentBet * 2)
+								document.getElementById(this.players[i].target).innerHTML = '$' + this.players[i].money
+								this.players[i].currentBet = 0
+								alert(this.players[i].nickname + ' ' + 'You WON the hand!')
 
-						}	
+							}	
 	} x = 0;
 	  currentPlayerSpot = 0;
 	 $('.pUp').hide();
@@ -404,8 +415,11 @@ Dealer.prototype.doubleDown = function() {
 		this.players[this.currentPlayerSpot].currentBet = (this.players[this.currentPlayerSpot].currentBet * 2);
 
 		document.getElementById(this.players[this.currentPlayerSpot].target).innerHTML = this.players[this.currentPlayerSpot].money;
+		$('#hit-btn').hide()
+		$('#double-btn').hide();
 		dealer.hit()
-		dealer.stay()
+		
+		
 	} else {
 		$('#double-btn').hide();
 		alert ('not enough money')
@@ -438,7 +452,6 @@ Dealer.prototype.resetHands = function() {
 	$('#double-btn').hide();
 	$('.chips').show()
 	$('#place-bet-btn').show()
-		
 }
 
 
@@ -736,5 +749,5 @@ var playerFive;
 // makes the silly hand go across the board
 function hand() {
 	$('#hand').show()
-	$('#hand').animate({right: '700px'}, 3000)
+	$('#hand').animate({right: '1000px'}, 3000)
 }
