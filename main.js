@@ -113,16 +113,20 @@ Dealer.prototype.deal = function() {
 				dealer.checkBlackJack(currentPlayer);
 		}
 }
-
+var x = 0; 
 //check value of current player for 21 or going over 
 //automatically passes if either occurs
 Dealer.prototype.checkValue = function(player) {
 	if (player.cardValue === 21) {
+		x = 0
 		dealer.stay()
+		x = 0
 		$('#double-btn').show();
 		$('#hit-btn').show()
 	} else if (player.cardValue > 21) {
+		x = 0
 		dealer.stay()
+		x = 0
 		$('#double-btn').show();
 		$('#hit-btn').show()
 	} else {
@@ -143,7 +147,7 @@ Dealer.prototype.checkBlackJack = function(player) {
 
 //HIT   
 	var timesHit = ['three', 'four', 'five'];
-	var x = 0;   
+	  
 Dealer.prototype.hit = function() {
 	var deckLength = this.deck.length - 1;
 	var currentPlayer = this.players[this.currentPlayerSpot];
@@ -162,8 +166,8 @@ Dealer.prototype.hit = function() {
 	var currentSpot = currentPlayer.cardImage + timesHit[x];
 	document.getElementById(currentSpot).src = card.image;
 	document.getElementById(currentSpot).style.display = 'inherit'
-	dealer.checkValue(currentPlayer);	
 	x++;
+	dealer.checkValue(currentPlayer);	
 }
 
 //stay 
@@ -182,7 +186,9 @@ Dealer.prototype.stay = function() {
 	}else {
 		this.currentPlayerSpot = this.currentPlayerSpot + 1;
 		$('#double-btn').show();
+		x = 0
 		dealer.playerTurn()
+		
 
 	}
 }
@@ -459,19 +465,22 @@ Dealer.prototype.resetHands = function() {
 // turns on the player up icon------------------------------------------------------------------ other
 	Dealer.prototype.playerTurn = function() {
 		var length = this.players.length
+		x = 0
 		if (length === 1) {
 			return null;
-		} else if (this.currentPlayerSpot < length){
-			var previousSpot = this.players[this.currentPlayerSpot-1].targetTwo;
-			var spot = this.players[this.currentPlayerSpot].targetTwo;
-			var spot = '#'+spot
-			var previousSpot = '#'+previousSpot
-			$(previousSpot).hide()
-			$(spot).show()
-		} else {
-			$('.pUp').hide();
-			$('#pOneUp').show();
-		}
+		
+			} else if (this.currentPlayerSpot < length){
+				var previousSpot = this.players[this.currentPlayerSpot-1].targetTwo;
+				var spot = this.players[this.currentPlayerSpot].targetTwo;
+				var spot = '#'+spot
+				var previousSpot = '#'+previousSpot
+				$(previousSpot).hide()
+				$(spot).show()
+		
+				} else {
+					$('.pUp').hide();
+					$('#pOneUp').show();
+				}
 	}
 
 	// adds cards
